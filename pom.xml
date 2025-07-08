@@ -37,7 +37,7 @@
 						<muleVersion>4.9.0</muleVersion>
 						<connectedAppClientId>214fe480e7924127aaf5a3ab50e9f2b5</connectedAppClientId>
 						<connectedAppClientSecret>a767ff627ECe48aBaF3d685C9ea8b9c0</connectedAppClientSecret>
-						<connectedAppGrantType>8146806917@Ankit0</connectedAppGrantType>
+						<connectedAppGrantType>password</connectedAppGrantType>
 						<applicationName>learning</applicationName>
 						<environment>DEV</environment>
 						<region>us-east-1</region>
