@@ -35,8 +35,9 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.9.0</muleVersion>
-						<username>Ankit_Mathur</username>
-						<password>8146806917@Ankit0</password>
+						<connectedAppClientId>63c387e090634f66819205db48b0abd7</connectedAppClientId>
+						<connectedAppClientSecret>B1A611B6C66a49198EC2Ebf511Dbc2da</connectedAppClientSecret>
+						<connectedAppGrantType>Password</connectedAppGrantType>
 						<applicationName>learning</applicationName>
 						<environment>Sandbox</environment>
 						<region>us.east-1</region>
