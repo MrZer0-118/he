@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-"HELLOOOOO!!!! I AM DOING CI/CD" ++ "YOOOOOOOOOOOOOOOOOOO"]]></ee:set-payload>
+"HELLOOOOO!!!! I AM DOING CI/CD" ++ "YOOOOOOOOOOOOOOOOOOO" +"TESTTTTTTTTTTTT"]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="43fca317-60eb-4e42-9ee6-8b6f50854b98" message="#[payload]"/>
