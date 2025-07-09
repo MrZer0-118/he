@@ -35,8 +35,8 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.9.0</muleVersion>
-						<connectedAppClientId>214fe480e7924127aaf5a3ab50e9f2b5</connectedAppClientId>
-						<connectedAppClientSecret>a767ff627ECe48aBaF3d685C9ea8b9c0</connectedAppClientSecret>
+						<connectedAppClientId>41fbf77bf20446b387a2fc3809c03351</connectedAppClientId>
+						<connectedAppClientSecret>704570cc8467431195F56A616DBe6964</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>learning</applicationName>
 						<environment>DEV</environment>
