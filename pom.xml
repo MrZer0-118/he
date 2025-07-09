@@ -40,7 +40,7 @@
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>learning</applicationName>
 						<environment>DEV</environment>
-						<region>us-east-1</region>
+						<region>US East (N. Virginia)</region>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						
