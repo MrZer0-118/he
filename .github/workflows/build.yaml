@@ -76,7 +76,8 @@ jobs:
         run: |
           mvn deploy \
             -DskipTests --settings settings/settings.xml \
+            -DcI: ${{ secrets.ANYPOINT_CLIENT_ID }} \
+            -DcS: ${{ secrets.ANYPOINT_CLIENT_SECRET }} \
             -Denvironment=${{ github.event_name == 'workflow_dispatch' && inputs.environment || env.DEFAULT_ENVIRONMENT }} \
             -DcommitMessage="${{ github.event_name == 'workflow_dispatch' && inputs.commit || env.DEFAULT_COMMIT_MESSAGE }}"
-            -DcI: ${{ secrets.ANYPOINT_CLIENT_ID }}
-            -DcS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
+            
