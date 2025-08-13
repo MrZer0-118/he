@@ -74,7 +74,7 @@ jobs:
           conI: ${{ secrets.ANYPOINT_CLIENT_ID }}
           conS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: |
-          mvn deploy -X \
+          mvn deploy \
             -DskipTests \
             -Denvironment=${{ github.event_name == 'workflow_dispatch' && inputs.environment || env.DEFAULT_ENVIRONMENT }} \
             -DcommitMessage="${{ github.event_name == 'workflow_dispatch' && inputs.commit || env.DEFAULT_COMMIT_MESSAGE }}"
