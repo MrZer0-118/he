@@ -28,7 +28,9 @@ output application/java
 }]]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="79a2ef1f-8765-433f-90de-760139154fdd" />
 		<logger level="INFO" doc:name="Logger" doc:id="55d41ba5-500f-4872-8529-fabd8d3f3a2c" />
+		<logger level="INFO" doc:name="Logger" doc:id="8eef11eb-bb91-434b-b158-4da312b65dbd" />
 		<logger level="INFO" doc:name="Logger" doc:id="5112f59e-02d8-4047-b76d-2d0de8379f0c" />
 		<logger level="INFO" doc:name="Logger" doc:id="43fca317-60eb-4e42-9ee6-8b6f50854b98" message="#[payload]"/>
 	</flow>
