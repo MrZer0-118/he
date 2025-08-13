@@ -17,8 +17,8 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 		<logger level="INFO" doc:name="Logger" doc:id="7e7b2e7e-b47b-4b5e-b7b1-e4b270c1709a" message="#[payload]"/>
 		<logger level="INFO" doc:name="Logger" doc:id="55d41ba5-500f-4872-8529-fabd8d3f3a2c" />
 		<ee:transform doc:name="Transform Message" doc:id="f2dc6fbc-32f8-4c94-9365-a67956b06bf9" />
-		<ee:transform doc:name="Transform Message" doc:id="a3a07f83-c247-4d8b-b4e0-99ae3930cac8" />
-		<ee:transform doc:name="Transform Message" doc:id="5363b717-c6dd-4db1-90ff-0184b580f407" />
 		<ee:transform doc:name="Transform Message1" doc:id="97f88786-5d41-42e3-97c2-2973a3469cf1" />
+		<logger level="INFO" doc:name="Logger" doc:id="6f670322-f9b1-4185-a4c2-c7b675a46b40" />
+		<logger level="INFO" doc:name="Logger" doc:id="6334feeb-0e73-4bd1-a582-dca57e04901f" />
 	</flow>
 </mule>
