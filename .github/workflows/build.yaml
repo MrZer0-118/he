@@ -1,7 +1,6 @@
 name: Mule App Deployment
 
 on:
-  # Manual trigger
   workflow_dispatch:
     inputs:
       environment:
@@ -19,7 +18,6 @@ on:
         required: true
         type: string
 
-  # Automatic trigger on push to main
   push:
     branches:
       - master
@@ -27,7 +25,7 @@ on:
 env:
   DEFAULT_ENVIRONMENT: DEV
   DEFAULT_JAVA_VERSION: '17'
-  DEFAULT_COMMIT_MESSAGE: 'Automated deployment from main branch'
+  DEFAULT_COMMIT_MESSAGE: 'Automated deployment from master branch'
 
 jobs:
   Test:
@@ -38,11 +36,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: ${{ inputs.java || env.DEFAULT_JAVA_VERSION }}
+          java-version: ${{ github.event_name == 'workflow_dispatch' && inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Run Tests
         env: 
-          cI: ${{secret.ANYPOINT_CLIENT_ID}}
-          cS: ${{secret.ANYPOINT_CLIENT_SECRET}}
+          cI: ${{ secrets.ANYPOINT_CLIENT_ID }}
+          cS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: mvn clean test
 
   Build:
@@ -54,11 +52,11 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: ${{ inputs.java || env.DEFAULT_JAVA_VERSION }}
+          java-version: ${{ github.event_name == 'workflow_dispatch' && inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Build Application
         env: 
-          cI: ${{secret.ANYPOINT_CLIENT_ID}}
-          cS: ${{secret.ANYPOINT_CLIENT_SECRET}}
+          cI: ${{ secrets.ANYPOINT_CLIENT_ID }}
+          cS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: mvn clean package -DskipTests
 
   Deploy:
@@ -70,13 +68,13 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: ${{ inputs.java || env.DEFAULT_JAVA_VERSION }}
+          java-version: ${{ github.event_name == 'workflow_dispatch' && inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Deploy to CloudHub 2.0
         env: 
-          cI: ${{secret.ANYPOINT_CLIENT_ID}}
-          cS: ${{secret.ANYPOINT_CLIENT_SECRET}}
+          cI: ${{ secrets.ANYPOINT_CLIENT_ID }}
+          cS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: |
           mvn deploy \
             -DskipTests \
-            -Denvironment=${{ inputs.environment || env.DEFAULT_ENVIRONMENT }} \
-            -DcommitMessage="${{ inputs.commit || env.DEFAULT_COMMIT_MESSAGE }}"
+            -Denvironment=${{ github.event_name == 'workflow_dispatch' && inputs.environment || env.DEFAULT_ENVIRONMENT }} \
+            -DcommitMessage="${{ github.event_name == 'workflow_dispatch' && inputs.commit || env.DEFAULT_COMMIT_MESSAGE }}"
