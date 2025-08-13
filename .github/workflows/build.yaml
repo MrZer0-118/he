@@ -71,10 +71,12 @@ jobs:
           java-version: ${{ github.event_name == 'workflow_dispatch' && inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Deploy to CloudHub 2.0
         env: 
-          cI: ${{ secrets.ANYPOINT_CLIENT_ID }}
-          cS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
+          conI: ${{ secrets.ANYPOINT_CLIENT_ID }}
+          conS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: |
-          mvn deploy \
+          mvn deploy -X \
             -DskipTests \
             -Denvironment=${{ github.event_name == 'workflow_dispatch' && inputs.environment || env.DEFAULT_ENVIRONMENT }} \
             -DcommitMessage="${{ github.event_name == 'workflow_dispatch' && inputs.commit || env.DEFAULT_COMMIT_MESSAGE }}"
+            -DcI: ${{ secrets.ANYPOINT_CLIENT_ID }}
+            -DcS: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
