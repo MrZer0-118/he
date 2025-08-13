@@ -22,7 +22,7 @@ on:
   # Automatic trigger on push to main
   push:
     branches:
-      - main
+      - master
 
 env:
   DEFAULT_ENVIRONMENT: DEV
