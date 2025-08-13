@@ -28,7 +28,6 @@ output application/java
 }]]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<salesforce:upsert objectType="test__c" doc:name="Upsert" doc:id="ab8b22cc-ce49-4065-bc82-bfc3e095f503" config-ref="Salesforce_Config" externalIdFieldName="orderId__c"/>
 		<!-- [STUDIO:"Create"]<salesforce:create doc:name="Create" doc:id="59c04d32-8c46-478b-9267-c7f779863158" config-ref="Salesforce_Config" type="test__c"/> [STUDIO] -->
 		<logger level="INFO" doc:name="Logger" doc:id="43fca317-60eb-4e42-9ee6-8b6f50854b98" message="#[payload]"/>
 	</flow>
