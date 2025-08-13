@@ -1,0 +1,22 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <servers>
+    <server>
+      <id>anypoint-exchange-v3</id>
+      <username>~~~Client~~~</username>
+      <password>d0c36b17cdab480e9ba8cd7c4853fbed~?~92cbd9cE0B674A8EabEf1eFbc337bA25</password>
+    </server>
+    <server>
+      <id>anypoint</id>
+      <username>~~~Client~~~</username>
+      <password>d0c36b17cdab480e9ba8cd7c4853fbed~?~92cbd9cE0B674A8EabEf1eFbc337bA25</password>
+    </server>
+  </servers>
+
+  <pluginGroups>
+    <pluginGroup>org.mule.tools</pluginGroup>
+  </pluginGroups>
+</settings>
