@@ -15,23 +15,8 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 	<flow name="Transform_TO_XMLFlow" doc:id="074bc206-4558-4527-8adf-c8c0da5afc89" >
 		<http:listener doc:name="Listener" doc:id="5647f7c6-2f13-413e-9767-595beeea7e91" config-ref="HTTP_Listener_config" path="/stest"/>
 		<logger level="INFO" doc:name="Logger" doc:id="7e7b2e7e-b47b-4b5e-b7b1-e4b270c1709a" message="#[payload]"/>
-		<ee:transform doc:name="Transform Message" doc:id="fa75c478-5c75-4eb1-b237-479e77772026">
-			<ee:message>
-				<ee:set-payload><![CDATA[%dw 2.0
-output application/java
----
-[{
-  orderId__c: "ORD002",
-  creationDate__c: "2025-06-01" as Date,
-  cancelationDate__c: "2025-06-01" as Date,
-  Name: "87492b1a-ddaa-4f26-2f86-09960effda1e"
-}]]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="55d41ba5-500f-4872-8529-fabd8d3f3a2c" />
-		<ee:transform doc:name="Transform Message" doc:id="6af6addf-f5c1-4e5a-a06a-557ff83c6dd8" />
 		<ee:transform doc:name="Transform Message" doc:id="f2dc6fbc-32f8-4c94-9365-a67956b06bf9" />
-		<logger level="INFO" doc:name="Logger" doc:id="43fca317-60eb-4e42-9ee6-8b6f50854b98" message="#[payload]"/>
 		<ee:transform doc:name="Transform Message" doc:id="a3a07f83-c247-4d8b-b4e0-99ae3930cac8" />
 		<ee:transform doc:name="Transform Message1" doc:id="97f88786-5d41-42e3-97c2-2973a3469cf1" />
 	</flow>
