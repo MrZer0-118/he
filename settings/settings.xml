@@ -7,12 +7,12 @@
     <server>
       <id>anypoint-exchange-v3</id>
       <username>~~~Client~~~</username>
-      <password>d0c36b17cdab480e9ba8cd7c4853fbed~?~92cbd9cE0B674A8EabEf1eFbc337bA25</password>
+      <password>${cI}~?~${cS}</password>
     </server>
     <server>
       <id>anypoint</id>
       <username>~~~Client~~~</username>
-      <password>d0c36b17cdab480e9ba8cd7c4853fbed~?~92cbd9cE0B674A8EabEf1eFbc337bA25</password>
+      <password>${cI}~?~${cS}</password>
     </server>
   </servers>
 
