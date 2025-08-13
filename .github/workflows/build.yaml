@@ -3,6 +3,9 @@ name: "Maven Github Actions App Deployment Workflow"
 
 # Trigger the workflow manually using the workflow_dispatch event with inputs for environment, Java version, and commit message
 on:
+  push:               # Automatic trigger
+    branches:
+      - master
   workflow_dispatch:
     inputs:
       environment:
