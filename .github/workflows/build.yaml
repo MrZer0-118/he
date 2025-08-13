@@ -40,6 +40,9 @@ jobs:
           distribution: temurin
           java-version: ${{ inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Run Tests
+        env: 
+          cI: ${{secret.ANYPOINT_CLIENT_ID}}
+          cS: ${{secret.ANYPOINT_CLIENT_SECRET}}
         run: mvn clean test
 
   Build:
@@ -53,6 +56,9 @@ jobs:
           distribution: temurin
           java-version: ${{ inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Build Application
+        env: 
+          cI: ${{secret.ANYPOINT_CLIENT_ID}}
+          cS: ${{secret.ANYPOINT_CLIENT_SECRET}}
         run: mvn clean package -DskipTests
 
   Deploy:
@@ -66,6 +72,9 @@ jobs:
           distribution: temurin
           java-version: ${{ inputs.java || env.DEFAULT_JAVA_VERSION }}
       - name: Deploy to CloudHub 2.0
+        env: 
+          cI: ${{secret.ANYPOINT_CLIENT_ID}}
+          cS: ${{secret.ANYPOINT_CLIENT_SECRET}}
         run: |
           mvn deploy \
             -DskipTests \
