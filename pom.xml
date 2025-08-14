@@ -33,21 +33,27 @@
 				<extensions>true</extensions>
 
 				<configuration>
-					<cloudhub2Deployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<provider>MC</provider>
-						<environment>DEV</environment>
-						<target>Cloudhub-US-East-1</target>
-						<releaseChannel>LTS</releaseChannel>
-						<javaVersion>17</javaVersion>
-						<muleVersion>4.9.7</muleVersion>
-						<server>anypoint</server>
-						<applicationName>learn2</applicationName>
-						<replicas>1</replicas>
-						<vCores>0.1</vCores>
-					
-					</cloudhub2Deployment>
-				</configuration>
+                    <cloudhub2Deployment>
+                        <uri>https://anypoint.mulesoft.com</uri>
+                        <provider>MC</provider>
+                        <environment>${environment}</environment>
+                        <target>cc-mule-private-space</target>
+                        <releaseChannel>LTS</releaseChannel>
+                        <javaVersion>${javaVersion}</javaVersion>
+                        <connectedAppClientId>${ClientId}</connectedAppClientId>
+                        <connectedAppClientSecret>${ClientSecret}</connectedAppClientSecret>
+                        <connectedAppGrantType>${GrantType}</connectedAppGrantType>
+                        <applicationName>${application.name}</applicationName>
+                        <replicas>1</replicas>
+                        <vCores>0.1</vCores>
+                        <properties>
+                            <mule.env>${mule.env}</mule.env>
+                        </properties>
+                        <secureProperties>
+                            <mule.key>${mule.key}</mule.key>
+                        </secureProperties>
+                    </cloudhub2Deployment>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
