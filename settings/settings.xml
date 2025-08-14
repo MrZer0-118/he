@@ -7,12 +7,12 @@
     <server>
       <id>anypoint-exchange-v3</id>
       <username>~~~Client~~~</username>
-      <password>${cI}~?~${cS}</password>
+      <password>${connectedAppId}~?~${connectedAppSecret}</password>
     </server>
     <server>
       <id>anypoint</id>
       <username>~~~Client~~~</username>
-      <password>${cI}~?~${cS}</password>
+      <password>${connectedAppId}~?~${connectedAppSecret}</password>
     </server>
   </servers>
 
