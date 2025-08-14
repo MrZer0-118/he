@@ -1,5 +1,5 @@
 # The name of the workflow, which is displayed in the GitHub Actions tab. This helps identify the workflow's purpose.
-name: "Maven Github CICD App Deployment Workflow"
+name: "Ankit-Maven Github Actions App Deployment Workflow"
 
 # Trigger the workflow manually using the workflow_dispatch event with inputs for environment, Java version, and commit message
 on:
@@ -26,7 +26,7 @@ on:
         type: string
 
 # Display the commit message, environment, and project name in the run name for better traceability
-run-name: " Commit: ${{ inputs.commit }} | Environment: ${{ inputs.environment }} | mulesoft-cicd-github-app"
+run-name: "Commit: ${{ inputs.commit }} | Environment: ${{ inputs.environment }} | maven-github-actions-app"
 
 jobs:
   # Testing job
@@ -41,24 +41,24 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('/${{ inputs.environment }}/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/${{ inputs.environment }}/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - name: Setup Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: 3.9.6
     # Setup the specified Java version
     - name: "Setup Java ${{ inputs.java }}"
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '${{ inputs.java }}'
+    - name: Setup Maven
+      uses: stCarolas/setup-maven@v5
+      with:
+        maven-version: 3.9.6
     # Run tests with Maven, passing environment-specific parameters (Application Env and Key)
     - name: "Test with Maven"
       env:
         connectedAppId: ${{ secrets.connected_app_id }}
-        connectedAppSecret: ${{ secrets.connected_app_secret }
+        connectedAppSecret: ${{ secrets.connected_app_secret }}
       run: |
         if [ "${{ inputs.environment }}" == "DEV" ];
         then
@@ -90,19 +90,19 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('/${{ inputs.environment }}/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/${{ inputs.environment }}/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - name: Setup Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: 3.9.6
     # Setup the specified Java version
     - name: "Setup Java ${{ inputs.java }}"
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '${{ inputs.java }}'
+    - name: Setup Maven
+      uses: stCarolas/setup-maven@v5
+      with:
+        maven-version: 3.9.6
     # Build the application with Maven, skipping tests as they've already been run
     - name: "Build with Maven"
       run: |
@@ -121,7 +121,7 @@ jobs:
       with:
           name: "Artifacts"
           path: target/*.jar
-          retention-days: 2
+          retention-days: 1
 
   # Publish to Anypoint Exchange
   Publish-To-Exchange:
@@ -136,18 +136,18 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('/${{ inputs.environment }}/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/${{ inputs.environment }}/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    - name: Setup Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: 3.9.6
     # Download the built JAR file from the Build job
     - name: "Download the JAR File"
       uses: actions/download-artifact@v4
       with:
         name: "Artifacts"
+    - name: Setup Maven
+      uses: stCarolas/setup-maven@v5
+      with:
+        maven-version: 3.9.6
     # Publish the application JAR to Anypoint Exchange
     - name: "Publish to Exchange"
       env:
@@ -168,7 +168,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('/${{ inputs.environment }}/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/${{ inputs.environment }}/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
     # Download the JAR file for deployment
@@ -192,7 +192,7 @@ jobs:
           mvn clean deploy -DskipTests -DmuleDeploy -DClientId="$connectedAppId" -DClientSecret="$connectedAppSecret" -DjavaVersion="${{ inputs.java }}" -DGrantType="$grantType" -Denvironment="${{ inputs.environment }}" -D"mule.env"="${{ secrets.dev_mule_env }}" -D"mule.key"="${{ secrets.dev_mule_key }}" -D"application.name"="ankit-mulesoft-cicd-app-dev"
         elif [ "${{ inputs.environment }}" == "UAT" ];
         then
-          mvn clean deploy -DskipTests -DmuleDeploy -DClientId="$connectedAppId" -DClientSecret="$connectedAppSecret" -DjavaVersion="${{ inputs.java }}" -DGrantType="$grantType" -Denvironment="${{ inputs.environment }}" -D"mule.env"="${{ secrets.uat_mule_env }}" -D"mule.key"="${{ secrets.uat_mule_key }}" -D"application.name"="ankit-mulesoft-cicd-app-uat"
+          mvn clean deploy -DskipTests -DmuleDeploy -DClientId="$connectedAppId" -DClientSecret="$connectedAppSecret" -DjavaVersion="${{ inputs.java }}" -DGrantType="$grantType" -Denvironment="${{ inputs.environment }}" -D"mule.env"="${{ secrets.uat_mule_env }}" -D"mule.key"="${{ secrets.uat_mule_key }}" -D"application.name"="amar-mulesoft-cicd-app-uat"
         else
-          mvn clean deploy -DskipTests -DmuleDeploy -DClientId="$connectedAppId" -DClientSecret="$connectedAppSecret" -DjavaVersion="${{ inputs.java }}" -DGrantType="$grantType" -Denvironment="${{ inputs.environment }}" -D"mule.env"="${{ secrets.prod_mule_env }}" -D"mule.key"="${{ secrets.prod_mule_key }}" -D"application.name"="ankit-mulesoft-cicd-app-prod"
+          mvn clean deploy -DskipTests -DmuleDeploy -DClientId="$connectedAppId" -DClientSecret="$connectedAppSecret" -DjavaVersion="${{ inputs.java }}" -DGrantType="$grantType" -Denvironment="${{ inputs.environment }}" -D"mule.env"="${{ secrets.prod_mule_env }}" -D"mule.key"="${{ secrets.prod_mule_key }}" -D"application.name"="amar-mulesoft-cicd-app"
         fi
